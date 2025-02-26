@@ -12,13 +12,7 @@
 
 
 @section("content")
-
-    @php
-        $placeholder = "Enter your name"
-    @endphp
-
-    <x-input-text :type="'text'" :placeholder="$placeholder" class="form-control w-25 bg-info"/>
-    <x-input-text2 :type="'checkbox'" :placeholder="$placeholder" class="bg-danger text-white"/>
+    <h1>About Page</h1>
 @endsection
 
 

@@ -35,7 +35,7 @@ Route::any('all', function () {
     dd("All methods are allowed");
 });
 
-Route::resource("article", "ArticleController");
+// Route::resource("article", "ArticleController");
 
 Route::resource("/api/article", "Api/ArticleController");
 
@@ -56,6 +56,7 @@ Route::get('/user/{role}', "UserController@roleCheck")
 
 
 Route::prefix("admin")->group(function(){
+   Route::get('/create-article', "ArticleController@create")->name("admin.create");
    Route::get('/edit-article', "ArticleController@edit")->name("admin.articleEdit");
    Route::get('/article/{id}/delete', "ArticleController@destroy")->name("admin.articleDestroy");
 });
