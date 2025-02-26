@@ -16,11 +16,6 @@
         </x-slot>
         <x-slot name='content'>
             <form action="" class="w-100 text-start" method="POST">
-                {{-- <div class="mb-3">
-                    <label for="name" class="mb-2">Article name</label>
-                    <input type="text" name="name" id="name" class="form-control" placeholder="Article name">
-                </div> --}}
-
                 <x-admin.elements.input
                     :type="'text'"
                     :labelClasses="'text-success'"
