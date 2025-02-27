@@ -15,7 +15,8 @@
             Add Article
         </x-slot>
         <x-slot name='content'>
-            <form action="" class="w-100 text-start" method="POST">
+            <form action="" class="w-100 text-start">
+                {{-- Text input section --}}
                 <x-admin.elements.input
                     :type="'text'"
                     :labelClasses="'text-success'"
@@ -25,26 +26,48 @@
                     :placeholder="'Article name input'"
                     :isDisabled="false"
                     :defaultValue="''"
+                    :isLabelAfter="false"
                     :parentClass="'mb-3'">
                     <x-slot name='label'>
                         Article Name
                     </x-slot>
                 </x-admin.elements.input>
 
-                <div class="mb-3">
-                    <label for="articleContent" class="mb-2">Article content</label>
-                    <textarea name="articleContent" id="articleContent" cols="30" rows="10" class="form-control" placeholder="Article content"></textarea>
-                </div>
 
-                <div class="mb-3">
-                    <label for="category" class="mb-2">Article category</label>
-                    <select name="category" id="category" class="form-select">
-                        <option value="-1">Choose category</option>
-                        <option value="1">PHP</option>
-                        <option value="2">Laravel</option>
-                    </select>
-                </div>
+                {{-- Textarea section --}}
+                <x-admin.elements.textarea
+                    :labelClasses="'text-success mb-2'"
+                    :id="'articleContent'"
+                    :name="'articleContent'"
+                    :placeholder="'Article content'"
+                    :parentClass="'mb-3'"
+                    :style="'resize: none;'">
+                    <x-slot name='label'>
+                        Article content
+                    </x-slot>
+                </x-admin.elements.textarea>
 
+                {{-- Select Option section --}}
+                @php
+                    $options = ['-1' => 'Choose category', '1' => 'PHP', '2' => 'Laravel'];
+                @endphp
+
+                <x-admin.elements.select
+                    :type="'text'"
+                    :labelClasses="'text-success mb-2'"
+                    :id="'category'"
+                    :name="'category'"
+                    :inputClass="'form-select'"
+                    :parentClass="'mb-3'"
+                    :options="$options"
+                    :defaultValue="'-1'">
+                    <x-slot name='label'>
+                        Article category
+                    </x-slot>
+                </x-admin.elements.select>
+
+
+                {{-- Checkbox input section --}}
                 <x-admin.elements.input
                     :type="'checkbox'"
                     :labelClasses="'text-success'"
@@ -54,16 +77,22 @@
                     :placeholder="'Article name input'"
                     :isDisabled="false"
                     :defaultValue="'Save'"
-                    :parentClass="'mb-3 d-flex gap-2'">
+                    :parentClass="'mb-3 d-flex gap-2'"
+                    :isLabelAfter="false">
                     <x-slot name='label'>
                         Should the article be published?
                     </x-slot>
                 </x-admin.elements.input>
 
-                <hr>
-                <div class="mb-3">
-                    <input type="submit" value="Add article" id="status" class="btn btn-success w-100">
-                </div>
+
+                {{-- Submit button section --}}
+                <x-admin.elements.input
+                    :type="'submit'"
+                    :id="'status'"
+                    :inputClass="'btn btn-success w-100'"
+                    :defaultValue="'Add article'"
+                    :parentClass="'mb-3'">
+                </x-admin.elements.input>
             </form>
         </x-slot>
         <x-slot name='footer'>
